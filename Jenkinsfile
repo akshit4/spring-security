@@ -5,15 +5,17 @@ pipeline{
     maven 'mymaven'
   }
   
-  stage('source-code-import'){
-    steps{
-      git branch: 'main', changelog: false, poll: false, url: 'https://github.com/akshit4/spring-security'
+  stages{
+    stage('source-code-import'){
+      steps{
+        git branch: 'main', changelog: false, poll: false, url: 'https://github.com/akshit4/spring-security'
+      }
     }
-  }
   
-  stage('compile'){
-    steps{
-      sh 'mvn clean complie'
+    stage('compile'){
+      steps{
+        sh 'mvn clean complie'
+      }
     }
   }
 }
